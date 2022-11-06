@@ -39,7 +39,13 @@
             this.RandomNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.ModuleConfig = new System.Windows.Forms.TableLayoutPanel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.ModuleSettings = new System.Windows.Forms.TabPage();
+            this.GeneralSettings = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.RandomNumericUpDown)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.ModuleSettings.SuspendLayout();
+            this.GeneralSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // ModulesListView
@@ -82,7 +88,7 @@
             // RandomCheckBox
             // 
             this.RandomCheckBox.AutoSize = true;
-            this.RandomCheckBox.Location = new System.Drawing.Point(239, 15);
+            this.RandomCheckBox.Location = new System.Drawing.Point(6, 6);
             this.RandomCheckBox.Name = "RandomCheckBox";
             this.RandomCheckBox.Size = new System.Drawing.Size(82, 17);
             this.RandomCheckBox.TabIndex = 3;
@@ -93,7 +99,7 @@
             // MuteCheckBox
             // 
             this.MuteCheckBox.AutoSize = true;
-            this.MuteCheckBox.Location = new System.Drawing.Point(239, 40);
+            this.MuteCheckBox.Location = new System.Drawing.Point(6, 31);
             this.MuteCheckBox.Name = "MuteCheckBox";
             this.MuteCheckBox.Size = new System.Drawing.Size(84, 17);
             this.MuteCheckBox.TabIndex = 4;
@@ -103,7 +109,7 @@
             // PreviewCheckBox
             // 
             this.PreviewCheckBox.AutoSize = true;
-            this.PreviewCheckBox.Location = new System.Drawing.Point(239, 63);
+            this.PreviewCheckBox.Location = new System.Drawing.Point(6, 54);
             this.PreviewCheckBox.Name = "PreviewCheckBox";
             this.PreviewCheckBox.Size = new System.Drawing.Size(133, 17);
             this.PreviewCheckBox.TabIndex = 5;
@@ -113,7 +119,7 @@
             // TaskbarCheckBox
             // 
             this.TaskbarCheckBox.AutoSize = true;
-            this.TaskbarCheckBox.Location = new System.Drawing.Point(239, 86);
+            this.TaskbarCheckBox.Location = new System.Drawing.Point(6, 77);
             this.TaskbarCheckBox.Name = "TaskbarCheckBox";
             this.TaskbarCheckBox.Size = new System.Drawing.Size(118, 17);
             this.TaskbarCheckBox.TabIndex = 6;
@@ -122,7 +128,7 @@
             // 
             // RandomNumericUpDown
             // 
-            this.RandomNumericUpDown.Location = new System.Drawing.Point(327, 14);
+            this.RandomNumericUpDown.Location = new System.Drawing.Point(94, 5);
             this.RandomNumericUpDown.Maximum = new decimal(new int[] {
             99,
             0,
@@ -145,7 +151,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(453, 16);
+            this.label1.Location = new System.Drawing.Point(220, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 8;
@@ -157,7 +163,8 @@
             this.ModuleConfig.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.ModuleConfig.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.ModuleConfig.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.ModuleConfig.Location = new System.Drawing.Point(503, 12);
+            this.ModuleConfig.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ModuleConfig.Location = new System.Drawing.Point(3, 3);
             this.ModuleConfig.Name = "ModuleConfig";
             this.ModuleConfig.RowCount = 10;
             this.ModuleConfig.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -170,29 +177,63 @@
             this.ModuleConfig.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.ModuleConfig.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.ModuleConfig.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.ModuleConfig.Size = new System.Drawing.Size(285, 426);
+            this.ModuleConfig.Size = new System.Drawing.Size(269, 364);
             this.ModuleConfig.TabIndex = 10;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.ModuleSettings);
+            this.tabControl1.Controls.Add(this.GeneralSettings);
+            this.tabControl1.Location = new System.Drawing.Point(239, 13);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(283, 396);
+            this.tabControl1.TabIndex = 11;
+            // 
+            // ModuleSettings
+            // 
+            this.ModuleSettings.Controls.Add(this.ModuleConfig);
+            this.ModuleSettings.Location = new System.Drawing.Point(4, 22);
+            this.ModuleSettings.Name = "ModuleSettings";
+            this.ModuleSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.ModuleSettings.Size = new System.Drawing.Size(275, 370);
+            this.ModuleSettings.TabIndex = 0;
+            this.ModuleSettings.Text = "Module Settings";
+            this.ModuleSettings.UseVisualStyleBackColor = true;
+            // 
+            // GeneralSettings
+            // 
+            this.GeneralSettings.Controls.Add(this.RandomCheckBox);
+            this.GeneralSettings.Controls.Add(this.label1);
+            this.GeneralSettings.Controls.Add(this.MuteCheckBox);
+            this.GeneralSettings.Controls.Add(this.RandomNumericUpDown);
+            this.GeneralSettings.Controls.Add(this.PreviewCheckBox);
+            this.GeneralSettings.Controls.Add(this.TaskbarCheckBox);
+            this.GeneralSettings.Location = new System.Drawing.Point(4, 22);
+            this.GeneralSettings.Name = "GeneralSettings";
+            this.GeneralSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.GeneralSettings.Size = new System.Drawing.Size(541, 370);
+            this.GeneralSettings.TabIndex = 1;
+            this.GeneralSettings.Text = "General Settings";
+            this.GeneralSettings.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ModuleConfig);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.RandomNumericUpDown);
-            this.Controls.Add(this.TaskbarCheckBox);
-            this.Controls.Add(this.PreviewCheckBox);
-            this.Controls.Add(this.MuteCheckBox);
-            this.Controls.Add(this.RandomCheckBox);
+            this.ClientSize = new System.Drawing.Size(534, 450);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.FolderComboBox);
             this.Controls.Add(this.SelectButton);
             this.Controls.Add(this.ModulesListView);
             this.Name = "Form1";
             this.Text = "After Dark Settings";
             ((System.ComponentModel.ISupportInitialize)(this.RandomNumericUpDown)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.ModuleSettings.ResumeLayout(false);
+            this.GeneralSettings.ResumeLayout(false);
+            this.GeneralSettings.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -209,6 +250,9 @@
         private System.Windows.Forms.NumericUpDown RandomNumericUpDown;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel ModuleConfig;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage ModuleSettings;
+        private System.Windows.Forms.TabPage GeneralSettings;
     }
 }
 

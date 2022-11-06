@@ -45,7 +45,12 @@ namespace AfterDarkSettings
         private RegistryKey GetModuleKey(string SelectedFolder, string ModuleName)
         {
             RegistryKey ModuleSettingsKey = AfterDarkKey.OpenSubKey("Module Settings");
-            return ModuleSettingsKey.OpenSubKey(SelectedFolder).OpenSubKey(ModuleName, true);
+            RegistryKey ModuleKey = ModuleSettingsKey.OpenSubKey(SelectedFolder).OpenSubKey(ModuleName, true);
+            if (ModuleKey == null)
+            {
+                ModuleKey = ModuleSettingsKey.OpenSubKey(SelectedFolder, true).CreateSubKey(ModuleName, true);
+            }
+            return ModuleKey;
         }
         //HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Berkeley Systems\After Dark\4.00
         private RegistryKey AfterDarkPathKey
@@ -382,6 +387,7 @@ namespace AfterDarkSettings
                                     case ADControl.PushButton:
                                         CurrentControl = new Button();
                                         ((Button)CurrentControl).Text = ControlInfo.ControlName;
+                                        ((Button)CurrentControl).Click += button_Click;
                                         break;
                                     default:
                                         CurrentControl = new Label();
@@ -413,12 +419,19 @@ namespace AfterDarkSettings
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        if(ex is System.ComponentModel.Win32Exception)
+                        {
+                            MessageBox.Show("After Dark 16 bits modules are not compatible with 64 bits Windows.");
+                        }
+                        else
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                 }
             }
         }
-
+        
         private void trackBar_ValueChanged(object sender, EventArgs e)
         {
             TrackBar CurrentControl = (TrackBar)sender;
@@ -437,6 +450,11 @@ namespace AfterDarkSettings
             Control[] Controls = ModuleConfig.Controls.Find(ControlName, true);
             Label ControlValue = (Label)Controls[0];
             ControlValue.Text = string.Format("{0}", ControlInfo.Values[CurrentControl.Value]);
+        }
+
+        private void button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented yet.");
         }
     }
 }
